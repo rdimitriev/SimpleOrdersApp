@@ -1,0 +1,2 @@
+# Simple store management app
+
