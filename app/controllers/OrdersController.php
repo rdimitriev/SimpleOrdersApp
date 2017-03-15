@@ -27,10 +27,25 @@ class OrdersController extends ControllerBase
      */
     public function searchAction()
     {
+        $form = new SearchForm();
+
+        $search = new Search();
+
         $numberPage = 1;
         if ($this->request->isPost() && $this->request->hasPost('searchType')) {
-            // Create the query conditions
-            $this->persistent->searchParams = $this->request->getPost();
+            // Validate the input
+            $data = $this->request->getPost();
+
+            if (!$form->isValid($data, $search)) {
+                $messages = $form->getMessages();
+
+                foreach ($messages as $message) {
+                    $this->flash->error($message);
+                }
+            } else {
+                // Create the query conditions
+                $this->persistent->searchParams = $data;
+            }
         } else {
             // Paginate using the existing conditions
             $numberPage = $this->request->getQuery("page", "int");
@@ -65,7 +80,7 @@ class OrdersController extends ControllerBase
         ]);
 
         $searchForm = new SearchForm();
-        $searchForm->bind($this->persistent->searchParams, new Search());
+        $searchForm->bind($this->persistent->searchParams, $search);
 
         $this->view->form = $searchForm;
         $this->view->page = $paginator->getPaginate();

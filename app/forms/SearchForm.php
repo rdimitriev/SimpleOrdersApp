@@ -5,7 +5,8 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Select;
 use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\Numericality;
+use Phalcon\Validation\Validator\StringLength;
+use Phalcon\Validation\Validator\Regex;
 
 class SearchForm extends Form
 {
@@ -40,6 +41,25 @@ class SearchForm extends Form
                 "placeholder" => "enter search term..."
             ]);
         $terms->setLabel("Terms");
+        $terms->addValidators(
+            [
+                new StringLength(
+                    [
+                        'max' => 50,
+                        'min' => 0,
+                        'messageMaximum' => 'Search term is too long',
+                        'messageMinimum' => '',
+                        'cancelOnFail' => true
+                    ]
+                ),
+                new Regex(
+                    [
+                        'pattern' => '/^[a-z0-9 .\-]*$/i',
+                        'message' => 'Search term must contain only alphanumeric characters'
+                    ]
+                )
+            ]
+        );
         $this->add($terms);
     }
 }
