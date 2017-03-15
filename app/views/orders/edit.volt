@@ -1,3 +1,4 @@
+{{ content() }}
 
 {{ form("orders/save", 'role': 'form') }}
 

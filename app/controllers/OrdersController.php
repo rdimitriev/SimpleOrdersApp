@@ -205,7 +205,11 @@ class OrdersController extends ControllerBase
             );
         }
 
-        $form = new OrdersForm();
+        $form = new OrdersForm($order,
+            [
+                "edit" => true,
+            ]
+        );
 
         $data = $this->request->getPost();
 
@@ -217,10 +221,13 @@ class OrdersController extends ControllerBase
                 $this->flash->error($message);
             }
 
+            $this->view->form = $form;
+
             return $this->dispatcher->forward(
                 [
                     "controller" => "orders",
-                    "action"     => "index",
+                    "action"     => "edit",
+                    "params"     => array('id' => $id)
                 ]
             );
         }
