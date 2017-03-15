@@ -30,7 +30,7 @@ CREATE TABLE `orders` (
   `total` float DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,12,21.6,'2017-03-14 08:27:41'),(2,1,1,33,59.4,'2017-03-14 09:03:56'),(3,1,1,33,59.4,'2017-03-14 09:11:31'),(4,1,1,111,199.8,'2017-03-14 09:22:33'),(5,1,1,33,59.4,'2017-03-14 09:19:35'),(6,1,2,2,3.2,'2017-03-14 09:21:18'),(8,1,1,33,59.4,'2017-03-14 09:26:05');
+INSERT INTO `orders` VALUES (1,1,1,12,21.6,'2017-03-14 08:27:41'),(2,1,1,33,59.4,'2017-03-01 09:03:56'),(3,1,1,33,59.4,'2017-03-07 09:11:31'),(4,1,1,111,199.8,'2017-03-14 09:22:33'),(5,1,1,33,59.4,'2017-03-14 09:19:35'),(6,1,2,2,3.2,'2017-03-14 09:21:18'),(8,1,1,33,59.4,'2017-03-14 09:26:05');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `products` (
   `name` varchar(100) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

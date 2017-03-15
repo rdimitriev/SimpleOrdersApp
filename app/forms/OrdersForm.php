@@ -5,7 +5,8 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Select;
 use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\Numericality;
+use Phalcon\Validation\Validator\Digit;
+use Phalcon\Validation\Validator\Between;
 
 class OrdersForm extends Form
 {
@@ -88,9 +89,17 @@ class OrdersForm extends Form
                         "cancelOnFail" => true
                     ]
                 ),
-                new Numericality(
+                new Digit(
                     [
                         "message" => "Quantity should be a number",
+                        "cancelOnFail" => true
+                    ]
+                ),
+                new Between(
+                    [
+                        "minimum" => 1,
+                        "maximum" => 1000000,
+                        "message" => "Quantity is out of allowed range",
                     ]
                 ),
             ]
